@@ -25,12 +25,12 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div className="container" id="content">
+      <div>
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
+          © {new Date().getFullYear()}, By
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href="">ab2</a>
         </footer>
       </div>
     </>
