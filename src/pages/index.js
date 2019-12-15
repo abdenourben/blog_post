@@ -14,6 +14,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 
 import { ThemeProvider } from '@material-ui/core/styles';
+import "../styles/index.scss";
 
 const theme = createMuiTheme({
   palette: {
@@ -84,6 +85,13 @@ const useStyles = makeStyles(theme => ({
     width: "90%",
     margin: "auto",
     marginTop: 70
+  },
+  headerTitle: {
+    content: '',
+    background: "rgba(0,0,0,0.12)",
+    height: "1px",
+    flex: "1",
+    marginLeft: "1rem",
   }
 
 }));
@@ -214,6 +222,10 @@ export default function IndexPage() {
             <StaticQuery query={indexQuery} render={data => {
               return(
                 <div>
+                  <div>
+                    <h2>Latest posts</h2>
+                  </div>
+                  
                   {data.allMarkdownRemark.edges.map(({ node }) => (
                     <Post
                       title={node.frontmatter.title}
@@ -222,6 +234,7 @@ export default function IndexPage() {
                       path={node.frontmatter.path}
                       body={node.excerpt}
                       fluid={node.frontmatter.image.childImageSharp.fluid}
+                      tags={node.frontmatter.tags}
                     />
                   ))}
                 </div>
@@ -232,6 +245,9 @@ export default function IndexPage() {
             <StaticQuery query={indexQuery} render={data => {
               return(
                 <div>
+                  <div>
+                    <h4>SharePoint posts</h4>
+                  </div>
                   {data.allMarkdownRemark.edges.map(({ node }) => (
                     <SidePost
                       title={node.frontmatter.title}
@@ -269,6 +285,7 @@ const indexQuery=graphql`
             date(formatString: "MM Do, YYYY")
             author
             path
+            tags
             image{
               childImageSharp{
                 fluid(maxWidth: 1200, maxHeight: 800){

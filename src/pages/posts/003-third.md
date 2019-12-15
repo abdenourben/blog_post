@@ -5,6 +5,9 @@ author: "Abdenour Bentouati"
 path: "/003-third"
 image: ../../images/faceImage.jpg
 published: true
+tags: 
+- SharePoint 
+- Outlook
 ---
 
 C'est la deuxieme fois que j'ecris quelque chose en francais C'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francais C'est la deuxieme fois que j'ecris quelque chose en francais

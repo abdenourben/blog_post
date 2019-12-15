@@ -16,11 +16,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Chip from '@material-ui/core/Chip';
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/indigo';
 import pink from '@material-ui/core/colors/pink';
 import red from '@material-ui/core/colors/red';
+import indigo from '@material-ui/core/colors/indigo';
+
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -73,10 +76,16 @@ const useStyles = makeStyles({
   },
   content: {
     paddingTop: 2
+  },
+  chip: {
+    backgroundColor: "pink",
+    margin: 2,
+    marginTop: 10
+
   }
 });
 
-function Post({ title, author, date, path, body, fluid }) {
+function Post({ title, author, date, path, body, fluid, tags }) {
   const classes = useStyles();
 
   return (
@@ -98,6 +107,11 @@ function Post({ title, author, date, path, body, fluid }) {
                 <Typography variant="body3" color="textPrimary" component="p">
                   {body}
                 </Typography>
+                
+                  {tags.map(tag => (
+                      <Chip classes={{root: classes.chip}} label={tag} />
+                  ))}
+                
               </CardContent>
             </Grid>
           </Grid>

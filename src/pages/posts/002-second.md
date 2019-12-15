@@ -5,6 +5,9 @@ author: "Aimen Boulahia"
 path: "/002-second"
 image: ../../images/faceImage.jpg
 published: true
+tags: 
+- SharePoint
+- Office365
 ---
 
 C'est la deuxieme fois que j'ecris quelque chose en francais C'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francaisC'est la deuxieme fois que j'ecris quelque chose en francais C'est la deuxieme fois que j'ecris quelque chose en francais
