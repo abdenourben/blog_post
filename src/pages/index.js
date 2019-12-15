@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql, StaticQuery } from "gatsby"
 import Post from "../components/Post"
+import SidePost from "../components/SidePost"
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,12 +21,15 @@ const theme = createMuiTheme({
       main: "#9fa8da",
       dark: "#6f79a8",
       light: "#d1d9ff",
+      contrastText: "#000"
     },
     secondary: {
       main: "#9e9e9e",
       dark: "#707070",
       light: "#cfcfcf",
+      contrastText: "#fff"
     },
+    
     error: red,
     contrastThreshold: 3,
     tonalOffset: 0.2,
@@ -35,30 +39,53 @@ const theme = createMuiTheme({
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing(7),
+    padding: theme.spacing(3),
   },
-  paper: {
+  paperTitleLatest: {
+    textAlign: "center",
     padding: theme.spacing(2),
-    textAlign: 'center',
-    //color: theme.palette.primary,
-    width: "90%",
-    margin: "auto",
-    marginTop: "20px",
-    //height: 1000,
-    //backgroundColor: "pink",
-    //backgroundColor: theme.palette.primary.light,
-    //color: theme.palette.primary.contrastText,
-  },
-  paperTitle: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    //color: theme.palette.primary,
-    width: "90%",
-    margin: "auto",
+    width: "100%",
     marginTop: "20px",
     backgroundColor: theme.palette.primary.light,
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.secondary.contrastText,
+    borderRadius: "0px"
   },
+  paperTitleSharepoint: {
+    textAlign: "center",
+    padding: theme.spacing(1),
+    width: "100%",
+    marginTop: "20px",
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.secondary.contrastText,
+    borderRadius: "0px"
+  },
+  paperLinks: {
+    padding: theme.spacing(2),
+    width: "100%",
+    height: "100px",
+    margin: "auto",
+    marginTop: "20px",
+    backgroundColor: "#cfcfcf",
+    color: theme.palette.primary.contrastText,
+    borderRadius: "0px"
+  },
+  grid: {
+    width: "100%",
+    margin: "auto"
+  },
+  gridPost: {
+    width: "400px",
+    margin: "auto",
+    marginTop: 60,
+    padding: theme.spacing(6),
+    paddingTop: 0,
+  },
+  gridSide: {
+    width: "90%",
+    margin: "auto",
+    marginTop: 70
+  }
+
 }));
 
 
@@ -72,12 +99,11 @@ export default function IndexPage() {
     return (
       
       <React.Fragment>
-        <Paper className={classes.paperTitle}>SharePoint Posts</Paper>
         <Grid item xs={12} sm={12}>
           <StaticQuery query={indexQuery} render={data => {
                   return(
                     <div>
-                        <Post
+                        <SidePost
                           body={data.allMarkdownRemark.edges[3].node.excerpt}
                           title={data.allMarkdownRemark.edges[3].node.frontmatter.title}
                           author={data.allMarkdownRemark.edges[3].node.frontmatter.author}
@@ -93,7 +119,7 @@ export default function IndexPage() {
           <StaticQuery query={indexQuery} render={data => {
                 return(
                   <div>
-                      <Post
+                      <SidePost
                         body={data.allMarkdownRemark.edges[3].node.excerpt}
                         title={data.allMarkdownRemark.edges[3].node.frontmatter.title}
                         author={data.allMarkdownRemark.edges[3].node.frontmatter.author}
@@ -109,7 +135,7 @@ export default function IndexPage() {
           <StaticQuery query={indexQuery} render={data => {
                 return(
                   <div>
-                      <Post
+                      <SidePost
                         body={data.allMarkdownRemark.edges[3].node.excerpt}
                         title={data.allMarkdownRemark.edges[3].node.frontmatter.title}
                         author={data.allMarkdownRemark.edges[3].node.frontmatter.author}
@@ -128,7 +154,6 @@ export default function IndexPage() {
   function FormRow2() {
     return (
       <React.Fragment>
-        <Paper className={classes.paper}>Latest Posts</Paper>
         <Grid item xs={12} sm={12}>
           <StaticQuery query={indexQuery} render={data => {
               return(
@@ -145,7 +170,7 @@ export default function IndexPage() {
                   )
             }}/>        
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
           <StaticQuery query={indexQuery} render={data => {
             return(
               <div>
@@ -161,7 +186,7 @@ export default function IndexPage() {
                 )
             }}/>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={12}>
           <StaticQuery query={indexQuery} render={data => {
             return(
               <div>
@@ -184,19 +209,44 @@ export default function IndexPage() {
   return (
     <Layout>
     <SEO title="Home" />
-      <Paper className={classes.paper}>
-      <ThemeProvider theme={theme} >
-        <Grid color="primary" container spacing={4}>
-          <Grid container justify="flex-start" alignItems="flex-start" item xs={12} sm={9} spacing={2}>
-            <FormRow2 />
+        <Grid justify="center"   alignItems="flex-start" className={classes.grid} container>
+          <Grid className={classes.gridPost} item xs={12} sm={9} spacing={3} >
+            <StaticQuery query={indexQuery} render={data => {
+              return(
+                <div>
+                  {data.allMarkdownRemark.edges.map(({ node }) => (
+                    <Post
+                      title={node.frontmatter.title}
+                      author={node.frontmatter.author}
+                      date={node.frontmatter.date}
+                      path={node.frontmatter.path}
+                      body={node.excerpt}
+                      fluid={node.frontmatter.image.childImageSharp.fluid}
+                    />
+                  ))}
+                </div>
+              )        
+            }}/>     
           </Grid>
-          <Grid container direction="row" justify="flex-start" alignItems="flex-end" item xs={12} sm={3} spacing={2}>
-            <FormRow />
+          <Grid className={classes.gridSide} item xs={12} sm={3} spacing={3} >
+            <StaticQuery query={indexQuery} render={data => {
+              return(
+                <div>
+                  {data.allMarkdownRemark.edges.map(({ node }) => (
+                    <SidePost
+                      title={node.frontmatter.title}
+                      author={node.frontmatter.author}
+                      date={node.frontmatter.date}
+                      path={node.frontmatter.path}
+                      body={node.excerpt}
+                      fluid={node.frontmatter.image.childImageSharp.fluid}
+                    />
+                  ))}
+                </div>
+              )        
+            }}/>
           </Grid>
         </Grid>
-        </ThemeProvider>
-
-      </Paper>
     </Layout>
 
   );
@@ -208,7 +258,8 @@ const indexQuery=graphql`
   query {
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC},
-      filter: { frontmatter: { published: { eq: true } } }
+      filter: { frontmatter: { published: { eq: true } } },
+      limit: 4
       ) {
       edges {
         node {
@@ -220,7 +271,7 @@ const indexQuery=graphql`
             path
             image{
               childImageSharp{
-                fluid(maxWidth: 1200, maxHeight: 500){
+                fluid(maxWidth: 1200, maxHeight: 800){
                   ...GatsbyImageSharpFluid
                 }
               }

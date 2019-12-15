@@ -21,7 +21,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#9fa8da",
+      main: "#6f79a8",
       dark: "#6f79a8",
       light: "#d1d9ff",
     },
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   },
   search: {
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: "0px",
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
@@ -116,7 +116,7 @@ export default function Header() {
               {site.siteMetadata.title}
             </Typography>
             <div className={classes.grow} />
-            <Button color="inhirit">Team</Button>
+            <Button color="inherit">Team</Button>
             <Button color="inherit">Tags</Button>
             <Button color="inherit">About</Button>
             <div className={classes.search}>

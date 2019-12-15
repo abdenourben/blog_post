@@ -13,9 +13,9 @@
   background-color: red;
 }
 body {
-  background-color: $light-gray;
+  background-color: #d1d9ff;
   font-family: $site-font;
-  color: #b6b8b9;
+  color: #d1d9ff;
 }
 a {
   color: #e4ecf5;
@@ -32,4 +32,8 @@ h1, h3 {
 ul {
   list-style: none;
   padding: 0;
+}
+
+.MuiPaper-rounded {
+  border-radius: 0px;
 }
