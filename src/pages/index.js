@@ -102,118 +102,6 @@ const useStyles = makeStyles(theme => ({
 export default function IndexPage() {
   const classes = useStyles();
 
-  function FormRow() {
-    
-    return (
-      
-      <React.Fragment>
-        <Grid item xs={12} sm={12}>
-          <StaticQuery query={indexQuery} render={data => {
-                  return(
-                    <div>
-                        <SidePost
-                          body={data.allMarkdownRemark.edges[3].node.excerpt}
-                          title={data.allMarkdownRemark.edges[3].node.frontmatter.title}
-                          author={data.allMarkdownRemark.edges[3].node.frontmatter.author}
-                          date={data.allMarkdownRemark.edges[3].node.frontmatter.date}
-                          path={data.allMarkdownRemark.edges[3].node.frontmatter.path}
-                          fluid={data.allMarkdownRemark.edges[3].node.frontmatter.image.childImageSharp.fluid}
-                        />
-                    </div>
-                      )
-                }}/>        
-        </Grid>
-        <Grid item xs={12} sm={12}>
-          <StaticQuery query={indexQuery} render={data => {
-                return(
-                  <div>
-                      <SidePost
-                        body={data.allMarkdownRemark.edges[3].node.excerpt}
-                        title={data.allMarkdownRemark.edges[3].node.frontmatter.title}
-                        author={data.allMarkdownRemark.edges[3].node.frontmatter.author}
-                        date={data.allMarkdownRemark.edges[3].node.frontmatter.date}
-                        path={data.allMarkdownRemark.edges[3].node.frontmatter.path}
-                        fluid={data.allMarkdownRemark.edges[3].node.frontmatter.image.childImageSharp.fluid}
-                      />
-                  </div>
-                    )
-              }}/>
-        </Grid>
-        <Grid item xs={12} sm={12}>
-          <StaticQuery query={indexQuery} render={data => {
-                return(
-                  <div>
-                      <SidePost
-                        body={data.allMarkdownRemark.edges[3].node.excerpt}
-                        title={data.allMarkdownRemark.edges[3].node.frontmatter.title}
-                        author={data.allMarkdownRemark.edges[3].node.frontmatter.author}
-                        date={data.allMarkdownRemark.edges[3].node.frontmatter.date}
-                        path={data.allMarkdownRemark.edges[3].node.frontmatter.path}
-                        fluid={data.allMarkdownRemark.edges[3].node.frontmatter.image.childImageSharp.fluid}
-                      />
-                  </div>
-                    )
-              }}/>
-        </Grid>
-      </React.Fragment>
-    );
-  }
-
-  function FormRow2() {
-    return (
-      <React.Fragment>
-        <Grid item xs={12} sm={12}>
-          <StaticQuery query={indexQuery} render={data => {
-              return(
-                <div>
-                    <Post
-                      body={data.allMarkdownRemark.edges[0].node.excerpt}
-                      title={data.allMarkdownRemark.edges[0].node.frontmatter.title}
-                      author={data.allMarkdownRemark.edges[0].node.frontmatter.author}
-                      date={data.allMarkdownRemark.edges[0].node.frontmatter.date}
-                      path={data.allMarkdownRemark.edges[0].node.frontmatter.path}
-                      fluid={data.allMarkdownRemark.edges[0].node.frontmatter.image.childImageSharp.fluid}
-                    />
-                </div>
-                  )
-            }}/>        
-        </Grid>
-        <Grid item xs={12} sm={12}>
-          <StaticQuery query={indexQuery} render={data => {
-            return(
-              <div>
-                  <Post
-                    body={data.allMarkdownRemark.edges[0].node.excerpt}
-                    title={data.allMarkdownRemark.edges[0].node.frontmatter.title}
-                    author={data.allMarkdownRemark.edges[0].node.frontmatter.author}
-                    date={data.allMarkdownRemark.edges[0].node.frontmatter.date}
-                    path={data.allMarkdownRemark.edges[0].node.frontmatter.path}
-                    fluid={data.allMarkdownRemark.edges[0].node.frontmatter.image.childImageSharp.fluid}
-                  />
-              </div>
-                )
-            }}/>
-        </Grid>
-        <Grid item xs={12} sm={12}>
-          <StaticQuery query={indexQuery} render={data => {
-            return(
-              <div>
-                  <Post
-                    body={data.allMarkdownRemark.edges[0].node.excerpt}
-                    title={data.allMarkdownRemark.edges[0].node.frontmatter.title}
-                    author={data.allMarkdownRemark.edges[0].node.frontmatter.author}
-                    date={data.allMarkdownRemark.edges[0].node.frontmatter.date}
-                    path={data.allMarkdownRemark.edges[0].node.frontmatter.path}
-                    fluid={data.allMarkdownRemark.edges[0].node.frontmatter.image.childImageSharp.fluid}
-                  />
-              </div>
-                )
-            }}/>
-        </Grid>
-      </React.Fragment>
-    );
-  }
-
   return (
     <Layout>
     <SEO title="Home" />
@@ -231,7 +119,7 @@ export default function IndexPage() {
                       title={node.frontmatter.title}
                       author={node.frontmatter.author}
                       date={node.frontmatter.date}
-                      path={node.frontmatter.path}
+                      slug={node.fields.slug}
                       body={node.excerpt}
                       fluid={node.frontmatter.image.childImageSharp.fluid}
                       tags={node.frontmatter.tags}
@@ -253,7 +141,7 @@ export default function IndexPage() {
                       title={node.frontmatter.title}
                       author={node.frontmatter.author}
                       date={node.frontmatter.date}
-                      path={node.frontmatter.path}
+                      slug={node.fields.slug}
                       body={node.excerpt}
                       fluid={node.frontmatter.image.childImageSharp.fluid}
                     />
@@ -284,7 +172,6 @@ const indexQuery=graphql`
             title
             date(formatString: "MM Do, YYYY")
             author
-            path
             tags
             image{
               childImageSharp{
@@ -293,6 +180,9 @@ const indexQuery=graphql`
                 }
               }
             }
+          }
+          fields {
+            slug
           }
           excerpt
         }

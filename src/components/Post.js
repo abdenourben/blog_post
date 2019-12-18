@@ -3,11 +3,6 @@ import { Link } from 'gatsby';
 //import { Card, CardTitle, CardBody, CardSubtitle, CardText } from 'reactstrap';
 import Img from 'gatsby-image';
 
-
-
-
-
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -30,8 +25,6 @@ import Grid from '@material-ui/core/Grid';
 import { borders } from '@material-ui/system';
 import { shadows } from '@material-ui/system';
 import "../styles/index.scss"
-import { StylesProvider } from '@material-ui/styles';
-import { withStyles } from '@material-ui/core/styles';
 
 
 
@@ -85,7 +78,7 @@ const useStyles = makeStyles({
   }
 });
 
-function Post({ title, author, date, path, body, fluid, tags }) {
+function Post({ title, author, date, slug, body, fluid, tags }) {
   const classes = useStyles();
 
   return (
@@ -98,9 +91,11 @@ function Post({ title, author, date, path, body, fluid, tags }) {
             </Grid>
             <Grid direction="row" item xs={12} sm={6}>
               <CardContent classes={{root: classes.content }} >
+              <Link to={slug}>
                 <Typography classes={{ root: classes.title }} noWrap gutterUp variant="h5" component="h2">
                   {title}
                 </Typography>
+                </Link>
                 <Typography noWrap variant="body3" color="textPrimary" component="p">
                   {date} by {author}
                 </Typography>

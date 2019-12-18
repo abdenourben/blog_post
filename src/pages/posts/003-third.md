@@ -2,7 +2,6 @@
 title: "Le troisieme billet de blog"
 date: 2019-12-11 23:59:59
 author: "Abdenour Bentouati"
-path: "/003-third"
 image: ../../images/faceImage.jpg
 published: true
 tags: 

@@ -60,7 +60,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SidePost({ title, author, date, path, body, fluid }) {
+export default function SidePost({ title, author, date, slug, body, fluid }) {
     const classes = useStyles();
   
     return (
@@ -74,9 +74,11 @@ export default function SidePost({ title, author, date, path, body, fluid }) {
             </Grid>
             <Grid direction="row" item xs={12} sm={6}>
               <CardContent classes={{ root: classes.content }}>
+                <Link to={slug} >
                 <Typography gutterUp>
                   {title}
                 </Typography>
+                </Link>
               </CardContent>
             </Grid>
           </Grid>
