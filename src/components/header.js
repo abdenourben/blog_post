@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -112,13 +112,23 @@ export default function Header() {
       <ThemeProvider theme={theme}>
         <AppBar color="primary" position="static">
           <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap>
-              {site.siteMetadata.title}
+            <Link to={'/'}>
+              <Typography  className={classes.title} variant="h6" noWrap>
+                {site.siteMetadata.title}
             </Typography>
+            </Link>
+            
             <div className={classes.grow} />
-            <Button color="inherit">Team</Button>
-            <Button color="inherit">Tags</Button>
-            <Button color="inherit">About</Button>
+            <Link to={"/team"}>
+              <Button color="inherit">Team</Button>
+            </Link>
+            <Link to={'/tags'}>
+              <Button color="inherit">Tags</Button>
+            </Link>
+            <Link to={'/about'}>
+              <Button  n color="inherit">About</Button>
+            </Link>
+            
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />

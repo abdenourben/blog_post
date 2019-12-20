@@ -84,18 +84,19 @@ function Post({ title, author, date, slug, body, fluid, tags }) {
   return (
     <ThemeProvider theme={theme}>
       <Card classes={{ root: classes.card }}>
-        <CardActionArea>
           <Grid container  alignItems="stretch">
             <Grid item xs={12} sm={6}>
               <Img className={classes.media} fluid={fluid} />
             </Grid>
             <Grid direction="row" item xs={12} sm={6}>
               <CardContent classes={{root: classes.content }} >
+              <CardActionArea>
               <Link to={slug}>
                 <Typography classes={{ root: classes.title }} noWrap gutterUp variant="h5" component="h2">
                   {title}
                 </Typography>
-                </Link>
+              </Link>
+              </CardActionArea>
                 <Typography noWrap variant="body3" color="textPrimary" component="p">
                   {date} by {author}
                 </Typography>
@@ -110,7 +111,6 @@ function Post({ title, author, date, slug, body, fluid, tags }) {
               </CardContent>
             </Grid>
           </Grid>
-        </CardActionArea>
       </Card>
     </ThemeProvider>
 

@@ -3,41 +3,52 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { Card, Grid, CardActionArea, CardContent, Typography } from '@material-ui/core'
+import { Card, Grid, CardActionArea, CardContent, Typography, Paper } from '@material-ui/core'
 import { slugify } from '../util/utilityFunctions'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles({
+    paper: {
+        padding: "30px",
+        maxWidth: "900px",
+        margin: "auto",
+        minWidth: "100px"
+    }
+})
+
 
 
 const SinglePost = ({ data }) => {
+    const classes = useStyles()
     const post = data.markdownRemark.frontmatter
+
     return (
         <Layout>
             <SEO title={post.title} />
 
-            <Card>
-                <CardActionArea>
-                    <Grid >
-                        <Grid item xs={12} sm={6}>
-                        <Img fluid={post.image.childImageSharp.fluid} />
-                        </Grid>
-                        <Grid direction="row" item xs={12} sm={6}>
-                            <CardContent >
-                                <Typography noWrap gutterUp variant="h5" component="h2">
+            <Paper classes={{ root:classes.paper }} >
+                    <div>
+                        <div>
+                            <Typography gutterUp variant="h3" component="h2">
                                 {post.title}
-                                </Typography>
-                                <Typography noWrap variant="body3" color="textPrimary" component="p">
-                                {post.date} by {post.author}
-                                </Typography>
-                                <Typography variant="body3" color="textPrimary" component="p">
-                                {post.body}
-                                </Typography>
-                                <div
-                                dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-                                />
-                            </CardContent>
-                        </Grid>
-                    </Grid>
-                </CardActionArea>
-            </Card>
+                            </Typography>
+                        </div>
+                        <div>
+                            <Img fluid={post.image.childImageSharp.fluid} />
+                        </div>
+                        <div>
+                            <Typography noWrap variant="body3" color="textPrimary" component="p">
+                            {post.date} by {post.author}
+                            </Typography>
+                            <Typography variant="body3" color="textPrimary" component="p">
+                            {post.body}
+                            </Typography>
+                            <div
+                            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
+                            />
+                        </div>
+                    </div>
+            </Paper>
 
         </Layout>        
     )
