@@ -1,5 +1,5 @@
 ---
-title: "Le quatrieme billet de blog"
+title: "Method to get term URL in taxonomy in SharePoint TermStore using PnP JS library"
 date: 2019-12-12 23:59:59
 author: "Abdenour Bentouati"
 image: ../../images/faceImage.jpg

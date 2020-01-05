@@ -40,5 +40,6 @@ module.exports = {
     // `gatsby-plugin-offline`,
     `gatsby-plugin-sass`,
     `gatsby-transformer-remark`,
+    `gatsby-plugin-fabric-ui`,    
   ],
 }

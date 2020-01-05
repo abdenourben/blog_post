@@ -170,7 +170,7 @@ const indexQuery=graphql`
           id
           frontmatter {
             title
-            date(formatString: "MM Do, YYYY")
+            date(formatString: "MMM Do, YYYY")
             author
             tags
             image{
