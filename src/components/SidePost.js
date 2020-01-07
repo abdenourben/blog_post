@@ -27,11 +27,13 @@ const theme = createMuiTheme({
       main: "#9fa8da",
       dark: "#6f79a8",
       light: "#d1d9ff",
+      contrastText: "#000"
     },
     secondary: {
       main: "#9e9e9e",
       dark: "#707070",
       light: "#cfcfcf",
+      contrastText: "#fff"
     },
     error: red,
     contrastThreshold: 3,
@@ -41,7 +43,7 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles({
   card: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.secondary.contrastText,
     color: theme.palette.primary.contrastText,
     boxShadow: "none",
     borderRadius: 0,
@@ -52,8 +54,8 @@ const useStyles = makeStyles({
     //width: "50px",
   },
   button: {
-    color: theme.palette.secondary.dark,
-    backgroundColor: theme.palette.secondary.light,
+    color: theme.palette.secondary.contrastText,
+    backgroundColor: theme.palette.secondary.contrastText,
   },
   content: {
     paddingTop: 2
@@ -67,7 +69,6 @@ export default function SidePost({ title, author, date, slug, body, fluid }) {
       <ThemeProvider theme={theme}>
   
   <Card classes={{ root: classes.card }} >
-        <CardActionArea>
           <Grid container>
             <Grid item xs={12} sm={6}>
               <Img fluid={fluid} />
@@ -82,7 +83,6 @@ export default function SidePost({ title, author, date, slug, body, fluid }) {
               </CardContent>
             </Grid>
           </Grid>
-        </CardActionArea>
       </Card>
       </ThemeProvider>
   

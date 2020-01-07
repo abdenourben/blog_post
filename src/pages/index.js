@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     width: "100%",
     marginTop: "20px",
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.secondary.contrastText,
     color: theme.palette.secondary.contrastText,
     borderRadius: "0px"
   },
@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     width: "100%",
     marginTop: "20px",
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.secondary.contrastText,
     color: theme.palette.secondary.contrastText,
     borderRadius: "0px"
   },
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     height: "100px",
     margin: "auto",
     marginTop: "20px",
-    backgroundColor: "#cfcfcf",
+    backgroundColor: "#fff",
     color: theme.palette.primary.contrastText,
     borderRadius: "0px"
   },
@@ -88,7 +88,7 @@ const useStyles = makeStyles(theme => ({
   },
   headerTitle: {
     content: '',
-    background: "rgba(0,0,0,0.12)",
+    //background: "rgba(0,0,0,0.12)",
     height: "1px",
     flex: "1",
     marginLeft: "1rem",

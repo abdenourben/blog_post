@@ -43,6 +43,7 @@ const theme = createMuiTheme({
       main: "#9e9e9e",
       dark: "#707070",
       light: "#cfcfcf",
+      contrastText: "#fff"
     },
     error: red,
     contrastThreshold: 3,
@@ -58,10 +59,10 @@ const useStyles = makeStyles({
   },
   button: {
     color: theme.palette.secondary.dark,
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.secondary.contrastText,
   },
   card: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.secondary.contrastText,
     color: theme.palette.primary.contrastText,
     boxShadow: "none",
     borderRadius: 0,
@@ -107,13 +108,11 @@ function Post({ title, author, date, slug, body, fluid, tags }) {
               />
               <CardContent classes={{root: classes.content }} >
             
-              <CardActionArea>
               <Link to={slug}>
                 <Typography classes={{ root: classes.title }} gutterUp variant="h5" component="h2">
                   {title}
                 </Typography>
               </Link>
-              </CardActionArea>
 
                 
                   {tags.map(tag => (
