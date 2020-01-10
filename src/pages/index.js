@@ -4,17 +4,18 @@ import SEO from "../components/seo"
 import { graphql, StaticQuery } from "gatsby"
 import Post from "../components/Post"
 import SidePost from "../components/SidePost"
-
-
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
 import { createMuiTheme } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
-
 import { ThemeProvider } from '@material-ui/core/styles';
-import "../styles/index.scss";
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import Fab from '@material-ui/core/Fab';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Zoom from '@material-ui/core/Zoom';
+
+
 
 const theme = createMuiTheme({
   palette: {
@@ -29,8 +30,7 @@ const theme = createMuiTheme({
       dark: "#707070",
       light: "#cfcfcf",
       contrastText: "#fff"
-    },
-    
+    },   
     error: red,
     contrastThreshold: 3,
     tonalOffset: 0.2,
@@ -71,24 +71,23 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "0px"
   },
   grid: {
-    width: "100%",
-    margin: "auto"
+    width: "97%",
+    margin: "auto",
   },
   gridPost: {
     width: "400px",
     margin: "auto",
-    marginTop: 60,
+    marginTop: 100,
     padding: theme.spacing(6),
     paddingTop: 0,
   },
   gridSide: {
     width: "90%",
     margin: "auto",
-    marginTop: 70
+    marginTop: 130
   },
   headerTitle: {
     content: '',
-    //background: "rgba(0,0,0,0.12)",
     height: "1px",
     flex: "1",
     marginLeft: "1rem",
@@ -96,16 +95,13 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-
-
-
-export default function IndexPage() {
+export default function IndexPage(props) {
   const classes = useStyles();
 
   return (
     <Layout>
-    <SEO title="Home" />
-        <Grid justify="center"   alignItems="flex-start" className={classes.grid} container>
+      <SEO title="Home" />
+        <Grid className={classes.grid} container>
           <Grid className={classes.gridPost} item xs={12} sm={9} spacing={3} >
             <StaticQuery query={indexQuery} render={data => {
               return(
@@ -155,8 +151,6 @@ export default function IndexPage() {
 
   );
 }
-
-
 
 const indexQuery=graphql`
   query {

@@ -4,23 +4,13 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-
-
 import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/indigo';
-import pink from '@material-ui/core/colors/pink';
 import red from '@material-ui/core/colors/red';
-
 import { ThemeProvider } from '@material-ui/core/styles';
 
-// All the following keys are optional, as default values are provided.
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -53,12 +43,15 @@ const useStyles = makeStyles({
     maxHeight: 240,
     //width: "50px",
   },
-  button: {
-    color: theme.palette.secondary.contrastText,
-    backgroundColor: theme.palette.secondary.contrastText,
-  },
   content: {
     paddingTop: 2
+  },
+  typography: {
+    color: "#000",
+    '&:hover': {
+      color: "#00a1f1",
+    },
+    fontSize: "1em", 
   }
 });
 
@@ -67,8 +60,7 @@ export default function SidePost({ title, author, date, slug, body, fluid }) {
   
     return (
       <ThemeProvider theme={theme}>
-  
-  <Card classes={{ root: classes.card }} >
+        <Card classes={{ root: classes.card }} >
           <Grid container>
             <Grid item xs={12} sm={6}>
               <Img fluid={fluid} />
@@ -76,15 +68,14 @@ export default function SidePost({ title, author, date, slug, body, fluid }) {
             <Grid direction="row" item xs={12} sm={6}>
               <CardContent classes={{ root: classes.content }}>
                 <Link to={slug} >
-                <Typography gutterUp>
-                  {title}
-                </Typography>
+                  <Typography classes={{root: classes.typography}} gutterUp variant="h5" component="h2">
+                    {title}
+                  </Typography>
                 </Link>
               </CardContent>
             </Grid>
           </Grid>
-      </Card>
+        </Card>
       </ThemeProvider>
-  
     );
   }
