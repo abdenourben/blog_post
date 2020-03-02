@@ -14,7 +14,7 @@ import Slide from '@material-ui/core/Slide';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#00a1f1",
+      main: "#131217",
       dark: "#6f79a8",
       light: "#d1d9ff",
     },
@@ -27,19 +27,42 @@ const theme = createMuiTheme({
     contrastThreshold: 3,
     tonalOffset: 0.2,
   },
+  typography: {
+    fontFamily: 
+
+      '"Segoe UI"',
+     
+  },
 });
 
 
 const useStyles = makeStyles(theme => ({
   grow: {
-    flexGrow: 1,
+    //flexGrow: 1,
+    //margin: "auto",
+    //float: "right"
   },
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    color: "#E2E8F0", 
   },
+  button: {
+    color: "#E2E8F0",
+    float: "right",
+  },
+  headerbar: {
+    boxShadow: "0px 1px 5px 1px rgba(255,255,255,1)", 
+    
+    //maxWidth: "1200px", 
+    //background: "red",
+  }, 
+  div: {
+    margin: "auto",
+    width: "1200px",
+    alignItems: "center"
+  }, 
+  div2: {
+    marginTop: "-30px"
+  }
 }));
 
 function HideOnScroll(props) {
@@ -74,25 +97,34 @@ export default function Header(props) {
     <div className={classes.grow}>
       <ThemeProvider theme={theme}>
       <HideOnScroll {...props}>
-        <AppBar color="primary" position="fixed">
-          <Toolbar>
+        <AppBar color="primary" position="fixed" classes={{ root: classes.headerbar }}>
+          <Toolbar variant="dense">
+          <div className={classes.div}>
+
             <Link to={'/'}>
               <Typography  className={classes.title} variant="h6" noWrap>
                 {site.siteMetadata.title}
             </Typography>
             </Link>         
             <div className={classes.grow} />
+            <div className={classes.div2}>
             <Link to={"/team"}>
-              <Button>Team</Button>
+              <Button className={classes.button}>Team</Button>
             </Link>
             <Link to={'/tags'}>
-              <Button>Tags</Button>
+              <Button className={classes.button}>Tags</Button>
             </Link>
             <Link to={'/about'}>
-              <Button>About</Button>
-            </Link>       
+              <Button className={classes.button}>About</Button>
+            </Link>
+            </div>
+           
+            </div>
+    
           </Toolbar>
         </AppBar>
+        
+        
         </HideOnScroll>
       </ThemeProvider>
     </div>

@@ -1,9 +1,9 @@
 ---
-title: "Shared Roles not appearing while joining a new server to an existing farm 2016.?"
+title: "Shared Roles not appearing while joining a new server to an existing farm 2016?"
 date: 2019-12-09 23:59:59
 author: "Abdenour Bentouati"
 authorImage: ../../images/author.jpg
-image: ../../images/faceImage.jpg
+image: ../../images/pic1.jpg
 published: true
 tags: 
 - Flow 

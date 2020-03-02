@@ -42,44 +42,20 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  paperTitleLatest: {
-    textAlign: "center",
-    padding: theme.spacing(2),
-    width: "100%",
-    marginTop: "20px",
-    backgroundColor: theme.palette.secondary.contrastText,
-    color: theme.palette.secondary.contrastText,
-    borderRadius: "0px"
-  },
-  paperTitleSharepoint: {
-    textAlign: "center",
-    padding: theme.spacing(1),
-    width: "100%",
-    marginTop: "20px",
-    backgroundColor: theme.palette.secondary.contrastText,
-    color: theme.palette.secondary.contrastText,
-    borderRadius: "0px"
-  },
-  paperLinks: {
-    padding: theme.spacing(2),
-    width: "100%",
-    height: "100px",
-    margin: "auto",
-    marginTop: "20px",
-    backgroundColor: "#fff",
-    color: theme.palette.primary.contrastText,
-    borderRadius: "0px"
-  },
   grid: {
-    width: "97%",
-    margin: "auto",
+    //maxWidth: "1400px",
+    height: "100%",
+    //background: "red",
+    //margin: "auto",
+    padding: "20px"
   },
   gridPost: {
-    width: "400px",
     margin: "auto",
-    marginTop: 100,
-    padding: theme.spacing(6),
-    paddingTop: 0,
+    marginTop: 70,
+    //background: "blue",
+    maxWidth: "1200px", 
+    //maxHeight: "600px", 
+    minWidth: "300px",
   },
   gridSide: {
     width: "90%",
@@ -102,15 +78,17 @@ export default function IndexPage(props) {
     <Layout>
       <SEO title="Home" />
         <Grid className={classes.grid} container>
-          <Grid className={classes.gridPost} item xs={12} sm={9} spacing={3} >
+          <Grid className={classes.gridPost} item xs={12} spacing={3} >
             <StaticQuery query={indexQuery} render={data => {
               return(
                 <div>
                   <div>
-                    <h2>Latest posts</h2>
+                    <h2>LATEST POSTS</h2>
                   </div>
+                  <br/>
                   
                   {data.allMarkdownRemark.edges.map(({ node }) => (
+
                     <Post
                       title={node.frontmatter.title}
                       author={node.frontmatter.author}
@@ -120,35 +98,15 @@ export default function IndexPage(props) {
                       fluid={node.frontmatter.image.childImageSharp.fluid}
                       tags={node.frontmatter.tags}
                     />
+
+                 
                   ))}
                 </div>
               )        
             }}/>     
           </Grid>
-          <Grid className={classes.gridSide} item xs={12} sm={3} spacing={3} >
-            <StaticQuery query={indexQuery} render={data => {
-              return(
-                <div>
-                  <div>
-                    <h4>SharePoint posts</h4>
-                  </div>
-                  {data.allMarkdownRemark.edges.map(({ node }) => (
-                    <SidePost
-                      title={node.frontmatter.title}
-                      author={node.frontmatter.author}
-                      date={node.frontmatter.date}
-                      slug={node.fields.slug}
-                      body={node.excerpt}
-                      fluid={node.frontmatter.image.childImageSharp.fluid}
-                    />
-                  ))}
-                </div>
-              )        
-            }}/>
-          </Grid>
         </Grid>
     </Layout>
-
   );
 }
 
@@ -157,19 +115,18 @@ const indexQuery=graphql`
     allMarkdownRemark(
       sort: {fields: [frontmatter___date], order: DESC},
       filter: { frontmatter: { published: { eq: true } } },
-      limit: 4
       ) {
       edges {
         node {
           id
           frontmatter {
             title
-            date(formatString: "MMM Do, YYYY")
+            date(formatString: "MMMM DD, YYYY")
             author
             tags
             image{
               childImageSharp{
-                fluid(maxWidth: 1200, maxHeight: 800){
+                fluid(maxWidth: 1200, maxHeight: 600){
                   ...GatsbyImageSharpFluid
                 }
               }

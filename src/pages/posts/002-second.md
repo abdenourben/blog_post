@@ -3,7 +3,7 @@ title: "Error retrieving items from large list, although the CAML query has a ro
 date: 2019-12-10 23:59:59
 author: "Aimen Boulahia"
 authorImage: ../../images/author.jpg
-image: ../../images/faceImage.jpg
+image: ../../images/pic2.jpg
 published: true
 tags: 
 - SharePoint
